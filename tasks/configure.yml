@@ -1,0 +1,14 @@
+---
+- name: Enable Kibana service
+  become: true
+  service:
+    name: kibana
+    state: started
+    enabled: yes
+- name: Configure Kibana
+  become: true
+  template:
+    src: kibana.yml.j2
+    dest: /etc/kibana/kibana.yml
+    mode: 0640
+  notify: restart Kibana
