@@ -3,7 +3,9 @@
   get_url:
     url: "https://artifacts.elastic.co/downloads/kibana/kibana-{{ kibana_version }}-x86_64.rpm"
     dest: "files/kibana-{{ kibana_version }}-x86_64.rpm"
+  timeout: 900
   delegate_to: localhost
+  run_once: True
   register: download_kibana
   until: download_kibana is succeeded
   when: kibana_install_type == 'remote'
