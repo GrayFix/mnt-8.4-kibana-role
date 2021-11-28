@@ -1,0 +1,12 @@
+---
+- name: ELK
+  hosts: elk
+  tasks: 
+    - name: Get elk facts
+      setup:
+- name: Converge
+  hosts: kbn
+  tasks:
+    - name: "Include kibana-role"
+      include_role:
+        name: "kibana-role"
